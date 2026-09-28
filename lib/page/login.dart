@@ -10,11 +10,30 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool changeButton = false;
+  final _formKey = GlobalKey<FormState>();
+  
+  moveToHome(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        changeButton = true;
+      });
+      await Future.delayed(Duration(seconds: 1));
+      await Navigator.pushNamed(context, MyRountes.homeRoute);
+      setState(() {
+        changeButton = false;
+      });
+      clearFormFields();
+    }
+  }
+
+  void clearFormFields() {
+    _formKey.currentState!.reset();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      // color: Colors.white,
       child: SingleChildScrollView(
         child:Column(
           children: [
@@ -25,6 +44,7 @@ class _LoginState extends State<Login> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               child:Form(
+                key: _formKey,
               child: Column(
                 spacing: 20,
                 children: [
@@ -33,6 +53,12 @@ class _LoginState extends State<Login> {
                   hintText: 'Enter Username',
                   labelText: 'Username',
               ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter a username';
+                }
+                return null;
+              },
             ),
               TextFormField(
               obscureText: true,
@@ -40,25 +66,26 @@ class _LoginState extends State<Login> {
                 hintText: 'Enter Password',
                 labelText: 'Password',
               ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter a password';
+                }else if (value.length < 6) {
+                  return 'Password must be at least 6 characters long';
+                }
+                return null;
+              },
             ),
           ],
-            ),
-              ),
-            ),
+          ),
+        ),
+      ),
             SizedBox(height: 10,),
             Material(
               color: Colors.purple,
               borderRadius: BorderRadius.circular(changeButton ? 50 : 8),
               child: InkWell(
                 onTap: () async {
-                  setState(() {
-                    changeButton = true;
-                  });
-                  await Future.delayed(Duration(seconds: 1));
-                  Navigator.pushNamed(context, MyRountes.homeRoute);
-                    setState(() {
-                    changeButton = false;
-                  });
+                  await moveToHome(context);
                 },
                 child: AnimatedContainer(
                   duration: Duration(seconds: 1),
