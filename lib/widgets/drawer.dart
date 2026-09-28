@@ -12,14 +12,14 @@ import 'package:flutter/material.dart';
         children: [
           // SizedBox(height: 50,),
           const DrawerHeader(
-            margin: EdgeInsets.all(0),
+            margin: EdgeInsets.zero,
             padding: EdgeInsets.zero,
             child: Column(
               // padding: EdgeInsets.all(20),
               mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-              Icon(Icons.account_circle, size: 80, color: Colors.white,),
+              Icon(Icons.account_circle, size: 50, color: Colors.white,),
                 SizedBox(height: 10),
                 Text('My App', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),),
               ],
