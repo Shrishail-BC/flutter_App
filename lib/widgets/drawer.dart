@@ -26,8 +26,8 @@ import 'package:flutter/material.dart';
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home, color: Colors.white,),
-            title: const Text('Home', style: TextStyle(color: Colors.white),),
+            leading: Icon(Icons.dashboard, color: Colors.white,),
+            title: const Text('Dashboard', style: TextStyle(color: Colors.white),),
             onTap: () {
               Navigator.pushNamed(context, '/home');
             },
