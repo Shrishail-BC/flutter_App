@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_app/utils/router.dart';
 import 'package:my_app/widgets/theme.dart';
+import 'models/product.dart' show Item;
+import 'page/home_Details.dart';
 import 'page/home_page.dart';
 import 'page/login.dart';
 import 'widgets/theme.dart';
@@ -24,11 +26,14 @@ class MyApp extends StatelessWidget {
       darkTheme: MyTheme.darkTheme(context),
         initialRoute: "/",
         routes: {
-            "/": (context) => Login(),
+            "/": (context) => HomePage(),
             MyRountes.homeRoute: (context) => HomePage(),
             MyRountes.loginRoute: (context) => Login(),
+            MyRountes.detailRoute: (context) => HomeDetailsPage(details: ModalRoute.of(context)!.settings.arguments as Item),
         },
       );
   }
 }
+
+
 

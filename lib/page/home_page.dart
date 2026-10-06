@@ -40,7 +40,38 @@ class _HomePageState extends State<HomePage> {
           title: Text('Dashboard'),
         ),
         body: Padding(padding: const EdgeInsets.all(2.0),
-        child: (PhoneModel.items != null && PhoneModel.items.isNotEmpty) ? ListView.builder(
+        child: (PhoneModel.items != null && PhoneModel.items.isNotEmpty) ?
+        // GridView.builder(
+        //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //     crossAxisCount: 2,
+        //     mainAxisSpacing: 5,
+        //     crossAxisSpacing: 5,
+        //     ), 
+        //   itemBuilder: (context,index){
+        //     final item=PhoneModel.items[index];
+        //     return Card(
+        //       clipBehavior: Clip.antiAlias,
+        //       shape: RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.circular(10) 
+        //       ),
+        //       child:GridTile(
+        //       header: Container(
+        //         padding: const EdgeInsets.all(5),
+        //         decoration: BoxDecoration(
+        //           color: Colors.deepPurple,
+
+        //         ),
+        //         child:Text(item.name, 
+        //         style: TextStyle(color: Colors.white)
+        //         ),
+        //         ),
+        //       child: Image.asset(item.image),
+        //       footer: Text(item.price.toString()),
+        //     ));
+        //   },
+        //   itemCount:PhoneModel.items.length,
+          // )
+        ListView.builder(
           itemCount: PhoneModel.items.length,
           itemBuilder: (context, index) {
             final item = PhoneModel.items[index];
