@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
+import '../utils/router.dart';
 
 class ItemWidget extends StatelessWidget {
   final Item item;
@@ -57,8 +58,10 @@ class ItemWidget extends StatelessWidget {
             ),
               ElevatedButton(
                 onPressed: () {
-                // Navigator.pushNamed(context, MyRountes.homeRoute);
+                Navigator.pushNamed(context, MyRountes.detailRoute, arguments: item);
                 },
+                // pushNamed(context, MyRountes.detailRoute, arguments: item);
+                // },
               child: Text('BUY', 
               style: TextStyle(
                 fontSize: 14, 
